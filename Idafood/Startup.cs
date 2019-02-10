@@ -27,7 +27,7 @@ namespace Idafood
             {
                 app.UseDeveloperExceptionPage();
             }
-
+            app.UseWelcomePage(); 
             app.Run(async (context) =>
             {
                 var greeting = greeter.GetMessageOfTheDay();
