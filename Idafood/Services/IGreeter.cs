@@ -1,9 +1,10 @@
 ﻿using Idafood;
+using Idafood.Services;
 using Microsoft.Extensions.Configuration;
 //Greeting Interface created and injected as a singleton service in startup cs
 //The greeter class implement the IGreeter interface method GetMessageOfTheDay 
 //GetMessageOfTheDay method is getting the greeting from  appsettings.json file
-namespace Idafood
+namespace Idafood.Services
 {
     public interface IGreeter
     {
