@@ -1,4 +1,5 @@
 ﻿using System;
+using Idafood.Services;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -18,6 +19,7 @@ namespace Idafood
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddSingleton<IGreeter, Greeter>();
+            services.AddScoped<IRestaurantData, InMemorRestaurantData>();// Use it one and thrwo it away and creat another instance for the next application that needs it
             services.AddMvc();
         }
 
@@ -38,10 +40,13 @@ namespace Idafood
             app.UseFileServer();
 
             
-            /*app.UseDefaultFiles();
-            app.UseStaticFiles();//Routes to static files*/
-            app.UseStaticFiles();//Routes to static files*/
-            app.UseMvc(configureRoutes);
+            //app.UseDefaultFiles();
+             
+           
+            app.UseStaticFiles();   //Routes to static files
+
+            app.UseMvc(ConfigureRoutes);
+
             app.Run(async (context) =>
             {
                 var greeting = greeter.GetMessageOfTheDay();
@@ -50,10 +55,11 @@ namespace Idafood
             });
         }
 
-        private void configureRoutes(IRouteBuilder routeBuilder)
+        private void ConfigureRoutes(IRouteBuilder routeBuilder)
         {
             // /Hpme/Index/4
-            routeBuilder.MapRoute("Default", "{controller=Home}/{action=Index}/{id?}");
+            routeBuilder.MapRoute("Default",
+                "{controller=Home}/{action=Index}/{id?}");
 
             //{controller} second part of the namer of the controller
             //{action} this is the methodit should call to render

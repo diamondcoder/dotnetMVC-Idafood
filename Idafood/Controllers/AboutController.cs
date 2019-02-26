@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 
 namespace Idafood.Controllers
 {
+   // [Route()]
     public class AboutController
     {
         public string Phone()

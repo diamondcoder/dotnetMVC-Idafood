@@ -1,11 +1,19 @@
-﻿@model Idafood.Models.Restaurant
+﻿@model Idafood.ViewModels.HomeIndexViewModel
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title></title>
 </head>
 <body>
-    <h1>@Model.name</h1>
-    <div> the Id is @Model.id</div>
-It working properly
+   
+<h1> @Model.CurrentMessage</h1>
+    <table>
+        @foreach (var restaurant in Model.Restaurants)
+        {
+        <tr>
+            <td> @restaurant.id</td>
+            <td> @restaurant.name</td>
+        </tr>
+        }
+    </table>
 </body>
 </html>
