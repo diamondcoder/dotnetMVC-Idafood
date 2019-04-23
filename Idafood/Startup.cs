@@ -37,12 +37,11 @@ namespace Idafood
                  Path = "/wp"
              }
                  ); */
-            app.UseFileServer();
 
-            
-            //app.UseDefaultFiles();
-             
-           
+            //app.UseDefaultFiles(); // renders default page which is index.html from the root
+
+            //app.UseFileServer();
+
             app.UseStaticFiles();   //Routes to static files
 
             app.UseMvc(ConfigureRoutes);
@@ -57,7 +56,7 @@ namespace Idafood
 
         private void ConfigureRoutes(IRouteBuilder routeBuilder)
         {
-            // /Hpme/Index/4
+            // /Home/Index/4
             routeBuilder.MapRoute("Default",
                 "{controller=Home}/{action=Index}/{id?}");
 

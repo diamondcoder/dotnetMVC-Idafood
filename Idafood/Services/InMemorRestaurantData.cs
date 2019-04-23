@@ -18,11 +18,20 @@ namespace Idafood.Services
                 new Restaurant { id = 3, name = "Anna's rice" }
             };
 
+
+
         }
 
         public IEnumerable<Restaurant> GetAll()
         {
             return _restaurants.OrderBy(r => r.name); 
+        }
+
+
+
+        public Restaurant Get(int id)
+        {
+            return _restaurants.FirstOrDefault(r => r.id == id);
         }
 
         List<Restaurant> _restaurants;
